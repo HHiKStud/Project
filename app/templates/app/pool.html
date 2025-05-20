@@ -1,0 +1,103 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>Форма обратной связи</h2>
+
+{% if not fb_data %}
+<form method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {% if form.username.errors %}
+        <div class="alert alert-danger">{{ form.username.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {% if form.email.errors %}
+        <div class="alert alert-danger">{{ form.email.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.site_rating.label_tag }}
+        {{ form.site_rating }}
+        {% if form.site_rating.errors %}
+        <div class="alert alert-danger">{{ form.site_rating.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.liked_features.label_tag }}
+        {{ form.liked_features }}
+        {% if form.liked_features.errors %}
+        <div class="alert alert-danger">{{ form.liked_features.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.visit_frequency.label_tag }}
+        {{ form.visit_frequency }}
+        {% if form.visit_frequency.errors %}
+        <div class="alert alert-danger">{{ form.visit_frequency.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.age.label_tag }}
+        {{ form.age }}
+        {% if form.age.errors %}
+        <div class="alert alert-danger">{{ form.age.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form.suggestions.label_tag }}
+        {{ form.suggestions }}
+        {% if form.suggestions.errors %}
+        <div class="alert alert-danger">{{ form.suggestions.errors }}</div>
+        {% endif %}
+    </div>
+
+    <button type="submit" id="btn btn-primary">Отправить отзыв</button>
+</form>
+
+{% else %}
+<div class="feedback-summary">
+    <h3>Спасибо за ваш отзыв!</h3>
+    <p><strong>Имя: </strong>{{fb_data.username}}</p>
+    <p><strong>Возраст: </strong>{{fb_data.age}}</p>
+    <p><strong>Эл. почта: </strong>{{fb_data.email}}</p>
+    <p><strong>Общая оценка сайта: </strong>{{fb_data.site_rating}}</p>
+    <p><strong>Понравилось: </strong>{{fb_data.liked_features|join:", "}}</p>
+    <p><strong>Частота посещений: </strong>{{fb_data.visit_frequency}}</p>
+    <p><strong>Предложения: </strong>{{fb_data.suggestions}}</p>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+    $(document).ready(function() {
+        $('form button[type="submit"]').hover(
+            function () { // pri navadenii
+                $(this).css('background-color', "#0dde9e");
+            },
+            function () { // pri "uhode" kursora
+                $(this).css('background-color', "white");
+            }
+        );
+
+        // Изменение фона текстовых полей при фокусе
+        $('form input[type="text"], form textarea').focus(function () {
+            $(this).css('background-color', '#ffe39c'); // светло-зеленый фон
+        }).blur(function () {
+            $(this).css('background-color', 'white'); // возвращаем белый фон
+        });
+    });
+</script>
+{% endblock %}

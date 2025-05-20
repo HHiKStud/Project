@@ -1,0 +1,26 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+{% load static %}
+
+
+<h2> Ссылки </h2>
+
+<article>
+    <a href="https://stroyka.uz/" target="_blank"><img src="{% static 'app/content/icon1.ico' %}" alt="Logo 1"  width="16" height="16"/>Stroyka.uz</a>
+    <p>Один из крупнейших порталов о строительстве и ремонте в России. На сайте можно найти статьи, советы, видеоуроки, калькуляторы для расчёта материалов и стоимости работ, а также каталог строительных компаний и магазинов.</p>
+</article>
+<article>
+    <a href="https://Forumhouse.ru/" target="_blank"><img src="{% static 'app/content/icon2.ico' %}" alt="Logo 2" width="16" height="16" />Forumhouse.ru</a>
+    <p>Крупнейший форум о строительстве, ремонте и загородной жизни. Здесь пользователи делятся опытом, задают вопросы, обсуждают проекты и ищут подрядчиков.</p>
+</article>
+<article>
+    <a href="https://Rmnt.ru/" target="_blank"><img src="{% static 'app/content/icon3.ico' %}" alt="Logo 3"  width="16" height="16" />Rmnt.ru</a>
+    <p>Сайт о ремонте и дизайне интерьеров. Портал предлагает множество идей, инструкций и советов для тех, кто хочет сделать ремонт своими руками или с привлечением профессионалов.</p>
+</article>
+<article>
+    <a href="https://Stroyday.ru/" target="_blank"><img src="{% static 'app/content/icon4.png' %}" alt="Logo 4" width="16" height="16" />Stroyday.ru</a>
+    <p>Портал для тех, кто интересуется строительством и ремонтом. На сайте много полезных статей, инструкций и рекомендаций от профессионалов.</p>
+</article>
+
+{% endblock %}
